@@ -1,0 +1,119 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="686" Width="959" Background="#FF1F9DD4">
+    <Grid HorizontalAlignment="Center" Width="959" Height="676" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="566*"/>
+            <ColumnDefinition Width="393*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu kontrol bölümünü youtubede ders çalışırken gormustum ve ödevime eklemek istedim -->
+        <!-- Kaynak: https://www.youtube.com/watch?v=utu9xGUkk50&ab_channel=RabieHammoud -->
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="Dosya" FontFamily="Comic Sans MS" FontSize="15">
+                <MenuItem Header="Aç"></MenuItem>
+                <MenuItem Header="Kaydet"></MenuItem>
+                <MenuItem Header="Farklı Kaydet"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Düzenle" FontFamily="Comic Sans MS" FontSize="15">
+                <MenuItem Header="Kopyala" Command="Copy"></MenuItem>
+                <MenuItem Header="Yapıştır" Command="Paste"></MenuItem>
+                <MenuItem Header="Kes" Command="Cut"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Yardım" FontFamily="Comic Sans MS" FontSize="15"></MenuItem>
+        </Menu>
+
+        <!--Ürünler kısmını oluşturan box -->
+        <ListBox Margin="68,197,0,0" Name="listBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="394" Height="385" FontFamily="Comic Sans MS" FontSize="15" Background="#FFCCE3E7" SelectionChanged="listBox1_SelectionChanged"/>
+
+        <!--Ürün girişini sağlayan textbox'lar -->
+        <TextBox Height="31" HorizontalAlignment="Left" Margin="129,197,0,0" Name="textBox1" VerticalAlignment="Top" Width="178" Background="#FFCCE3E7" FontFamily="Comic Sans MS" FontSize="15" FontStyle="Normal" Grid.Column="1"/>
+        <TextBox Height="31" HorizontalAlignment="Left" Margin="129,249,0,0" x:Name="textBox2" VerticalAlignment="Top" Width="178" Background="#FFCCE3E7" FontFamily="Comic Sans MS" FontSize="15" Grid.Column="1" />
+        <TextBox Height="32" HorizontalAlignment="Left" Margin="129,352,0,0" x:Name="textBox3" VerticalAlignment="Top" Width="178" Background="#FFCCE3E7" FontFamily="Comic Sans MS" FontSize="15" Grid.Column="1" TextChanged="textBox3_TextChanged" />
+        <TextBox Height="30" HorizontalAlignment="Left" Margin="129,299,0,0" x:Name="textBox4" VerticalAlignment="Top" Width="178" Background="#FFCCE3E7" FontFamily="Comic Sans MS" FontSize="15" Grid.Column="1" />
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="28,428,0,0" Name="textBox5" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="34" Background="#FFCCE3E7" FontFamily="Comic Sans MS" FontSize="15"/>
+        
+        <Label Content="Bilgisayar Satış Programı" HorizontalAlignment="Left" Height="58" Margin="314,50,0,0" VerticalAlignment="Top" Width="368" FontSize="30" Grid.ColumnSpan="2" FontFamily="Comic Sans MS"/>
+        <Label Content="Model" HorizontalAlignment="Left" Height="31" Margin="28,249,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold" FontSize="17" FontFamily="Comic Sans MS" Grid.Column="1" FontStyle="Italic"/>
+        <Label Content="Bellek" HorizontalAlignment="Left" Height="30" Margin="28,299,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold" FontSize="17" FontFamily="Comic Sans MS" Grid.Column="1" FontStyle="Italic"/>
+        <Label Content="Fiyat" HorizontalAlignment="Left" Height="44" Margin="28,346,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold" FontSize="17" FontFamily="Comic Sans MS" Grid.Column="1" FontStyle="Italic"/>
+        <Label Content="Marka" HorizontalAlignment="Left" Height="31" Margin="28,197,0,0" VerticalAlignment="Top" Width="118" FontWeight="Bold" FontSize="17" FontFamily="Comic Sans MS" Grid.Column="1" FontStyle="Italic"/>
+        <Label Content="Ürünler" HorizontalAlignment="Left" Height="32" Margin="222,139,0,0" VerticalAlignment="Top" Width="87" FontSize="20" FontWeight="Bold" FontStyle="Italic" FontFamily="Comic Sans MS"/>
+        <Label Content="Ürün Girişi" HorizontalAlignment="Left" Height="47" Margin="136,139,0,0" VerticalAlignment="Top" Width="118" FontSize="20" FontWeight="Bold" Grid.Column="1" FontFamily="Comic Sans MS" FontStyle="Italic" RenderTransformOrigin="0.547,0.991" Foreground="Black"/>
+
+        <!-- Ekle, Sil, Düzenle, Tümünü Sil butonlarını oluşturan komutlar -->
+        <Button Height="50" Margin="28,502,0,0" x:Name="button1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Click="Button_ClickEkle" Content="Ekle" FontFamily="Segoe UI" FontSize="15" FontWeight="Normal" Foreground="#FFFFECEC"  Grid.Column="1" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF2B9EA9" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF31ACB7" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Tümünü Sil" HorizontalAlignment="Left" Margin="117,580,0,0" VerticalAlignment="Top" Height="50" Width="120" Click="Button_Click" FontSize="15" Grid.Column="1" Foreground="#FFEBEBEB" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF2B9EA9" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF2B9EA9" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Düzenle" HorizontalAlignment="Left" Margin="218,424,0,0" VerticalAlignment="Top" Height="42" Width="120" Click="Button_Click5" FontSize="15" Grid.Column="1" Foreground="#FFEDEDED" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF2B9EA9" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF2B9EA9" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Sil" HorizontalAlignment="Left" Margin="196,502,0,0" VerticalAlignment="Top" Height="50" Width="124" Click="Button_ClickSil" FontSize="15" Grid.Column="1" Foreground="#FFE8E7E7" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="#FF2B9EA9" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF2B9EA9" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        
+
+        <!-- Arka plan resmini değiştirmeye yarayan komut-->
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Asus\Desktop\Wpf_Final\WpfApp1\image.jpg" />
+        </Grid.Background>
+
+    </Grid>
+</Window>
